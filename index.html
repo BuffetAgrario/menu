@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#B3261E">
   <title>Buffet Agrario</title>
+  <link rel="icono de acceso directo" href="/favicon.ico" type="imagen/x-icon">
+  <link rel="icono" href="/favicon.ico" type="imagen/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap" rel="stylesheet">
@@ -1617,12 +1619,15 @@
 
   </script>
 
-  <!-- Registro del Service Worker para cachear este HTML -->
+  <!-- Desregistro de cualquier Service Worker previo -->
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('sw.js')
-          .catch(function (err) { console.error('Error registrando Service Worker', err); });
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        registrations.forEach(function (registration) {
+          registration.unregister();
+        });
+      }).catch(function (err) {
+        console.warn('No se pudo desregistrar el Service Worker', err);
       });
     }
   </script>
