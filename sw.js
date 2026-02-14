@@ -1,4 +1,4 @@
-const CACHE_NAME = 'buffet-cache-v1.0.1';
+const CACHE_NAME = 'buffet-cache-v1.0.2';
 // Rutas a cachear al instalar el SW. Ajusta si cambias nombres.
 const URLS_TO_CACHE = [
   './',          // carpeta actual
